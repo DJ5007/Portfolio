@@ -1,13 +1,37 @@
+@import url('../css/fonts.css');
+
+
 html,body {
     margin: 0;
     box-sizing: border-box;
     overflow-x: hidden;
 }
 
-/*----------Global Classes---------*/
+:root {
+    /*Theme color*/
+    --text-gray: #3f4954;
+    --text-light: #686666da;
+    --bg-color: #0f0f0f;
+    --white: #fff;
+    --midnight: #104f55;
+
+    /*Gradient color*/
+    --sky: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+
+    /*theme font-family*/
+    --Abel: 'Abel', cursive;
+    --Anton: 'Anton', cursive;
+    --Josefin: 'Josefin', cursive;
+    --Lexend: 'Lexend', cursive;
+    --Livvic: 'Livvic', cursive;
+}
+
+/*----------  Global Classes  ---------*/
 
 a {
     text-decoration: none;
+    color: var(--text-gray);
+    cursor: pointer;
 }
 
 .flex-row {
@@ -20,26 +44,91 @@ ul {
     list-style: none;
 }
 
-/*----x-----Global Classes----x----*/
+h1 {
+    font-family: var(--Lexend);
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-family: var(--Lexend);
+}
+
+h3 {
+    font-family: var(--Abel);
+    font-size: 2.5rem;
+}
+
+button.btn {
+    border: none;
+    border-radius: 2rem;
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    font-family: var(--Livvic);
+    cursor: pointer;
+}
+
+span {
+    font-family: var(--Abel);
+}
+
+.container {
+    margin: 0 5vw;
+}
+
+/*---------  Global Classes End --------*/
 
 
-/*---------navbar----------*/
+/*-------  navbar  --------*/
 
 .nav {
     background: #fff;
     padding: 0 2rem;
-    height: 0rem;
-    min-height: 10vh;
+    height: 0;
+    min-height: 8vh;
+    overflow: hidden;
+    transition: height 1s ease-in-out;
 }
 
 .nav .nav-menu {
     justify-content: space-between;
 }
 
+.nav .toggle-collapse {
+    position: absolute;
+    top: 0;
+    width: 90%;
+    cursor: pointer;
+    display: none;
+}
+
+.nav .toggle-collapse .toggle-icons {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1.7rem 0;
+}
+
+.nav .toggle-collapse .toggle-icons i {
+    font-size: 1.4rem;
+    color: var(--text-gray);
+}
+
+.collapse {
+    height: 30rem;
+}
+
 .nav .nav-items .nav-link {
     padding: 1.6rem 1rem;
-    font-style: 1.1rem;
+    font-size: 1.1rem;
     position: relative;
+    font-family: var(--Abel);
+}
+
+.nav .nav-items .nav-link:hover {
+    background: var(--midnight);
+}
+
+.nav .nav-items .nav-link:hover a {
+    color: var(--white);
 }
 
 .nav .nav-items {
@@ -51,10 +140,173 @@ ul {
     font-size: 1.6rem;
     padding: 1rem 0;
     display: block;
+    font-family: var(--Lexend);
+
 }
 
 .nav .social {
     padding: 1.4rem 0;
 }
 
-/*----x-----navbar-----x-----*/
+.nav .social i {
+    padding: .2rem;
+}
+
+.nav .social i:hover {
+    color: #a1c4cf;
+}
+
+/*-------  navbar End  --------*/
+
+
+/*-------  Main Content  --------*/
+
+   /*Site Title*/
+
+main .site-title {
+    background-image: url(../img/Background-image.png);
+    background-size: cover;
+    height: 110vh;
+    display: flex;
+    justify-content: center;
+}
+
+main .site-title .site-background {
+    padding-top: 10rem;
+    text-align: center;
+    color: var(--white);
+}
+
+main .site-title h1, h2 {
+    margin: .3rem;
+}
+main .site-title .btn {
+    margin: 1.8rem;
+    background: var(--sky);
+}
+
+main .site-title .btn:hover {
+    background: transparent;
+    border: 1px solid #fff;
+    color: #fff;
+}
+
+   /*Site Title End*/
+
+   /*  Blog-carousel  */
+
+main .blog {
+    background: url("../img/Abract01.png");
+    background-repeat: no-repeat;
+    background-position: right;
+    height: 100vh;
+    width: 100%;
+    background-size: 65%;
+}
+
+main .blog .blog-post {
+    padding-top: 6rem;
+}
+
+main .blog-post .blog-content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 80%;
+    margin: 3rem 2rem;
+    box-shadow: 0 15px 20px rgba(0,0,0,.2);
+}
+
+main .blog-post .blog-content .blog-title {
+    padding: 2rem 0;
+}
+main .blog-content .btn-blog {
+    padding: .7rem 2rem;
+    background: var(--sky);
+    margin: .5rem;
+}
+
+main .blog-content span {
+    display: block;
+}
+
+section .container .owl-nav{
+    position: absolute;
+    top: 0;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.owl-prev,
+.owl-next {
+    outline: transparent;
+}
+
+.owl-nav .owl-nav-prev .owl-nav-prev,
+.owl-nav .owl-nav-next .owl-nav-next {
+    color: var(--text-gray);
+    background: transparent;
+    font-size: 2rem;
+}
+
+.owl-theme .owl-nav [class*='owl-']:hover {
+    background: transparent;
+    color: var(--midnight);
+}
+
+/*  Blog-carousel End*/
+
+/*--------  Main Content End ---------*/
+
+
+/*    Viewport less then or equal to 750px    */
+
+@media only screen and (max-width: 750px) {
+    .nav .nav-menu,
+    .nav .nav-items {
+        flex-direction: column;
+    }
+
+    .nav .toggle-collapse {
+        display: initial;
+    }
+}
+
+/*   Viewport less then or equal to 750px End  */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
